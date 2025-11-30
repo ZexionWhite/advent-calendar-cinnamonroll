@@ -86,7 +86,7 @@ export const gifts = [
   {
     day: 25,
     title: "día 25",
-    message: "Feliz navidad mi pedacito de Louvre.",
+    message: "Feliz navidad mi pedacito de Louvre.  ",
     url: "https://tu-link-del-regalo-23.com",
     image: "/cinna/cinna-25.png",
   },
