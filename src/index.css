@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+body {
+  background-image: url('/cinna/cinna-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.snow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('/cinna/snowflakes.png');
+  background-repeat: repeat;
+  background-size: 240px 320px;
+  background-position: -150px 0;
+  opacity: 0.6;
+  animation: snow 36s linear infinite;
+}
+
+@keyframes snow {
+  from {
+    background-position: -150px 0;
+  }
+  to {
+    background-position: -150px 900px;
+  }
+}
