@@ -55,11 +55,11 @@ function getTodayInfo() {
 function isDayUnlocked(day) {
   const { month, date } = getTodayInfo();
 
-  // if (month < 11) return false;
+  if (month < 11) return false;
 
-  // if (month === 11) {
-  //   return date >= day;
-  // }
+  if (month === 11) {
+    return date >= day;
+  }
 
   return true;
 }
