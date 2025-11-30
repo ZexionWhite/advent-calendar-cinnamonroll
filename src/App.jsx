@@ -88,7 +88,7 @@ function App() {
 
   function handleDayClick(gift) {
     if (!isDayUnlocked(gift.day)) {
-      alert("todavía no podés abrir este día, amor 🫣");
+      alert("No seas ansiosa, que todavia no podes abrir ese.");
       return;
     }
 
