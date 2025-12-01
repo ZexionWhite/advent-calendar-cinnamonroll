@@ -3,7 +3,7 @@ export const gifts = [
     day: 1,
     title: "día 1",
     message: "Vamos a empezar con un pequeño regalo, para ir iniciando esta primera navidad juntos.",
-    url: "https://drive.google.com/file/d/1MhVdx6ZTVRgzdL0tqgNdSjR7YfjlugkT/view?usp=sharing",
+    url: "internal:letters",
     image: "/cinna/cinna-1.png",
   },
   {

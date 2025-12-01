@@ -1,0 +1,123 @@
+// src/data/letters.js
+export const letters = [
+  {
+    id: 1,
+    label: "cuando estés triste",
+    short: "Para cuando las cosas pesen mas de lo usual.",
+    content: "Estoy seguro de que ahora mismo estas muy abrumada, que todo te pesa demasaido y quizas creas que todo este dolor no es pasajero, pero quiero que sepas una cosa, esto tambien va a pasar.",
+  },
+  {
+    id: 2,
+    label: "cuando no puedas dormir",
+    short: "Para esas noches largas donde la cabeza no para.",
+    content: "¿Que pasa que no podes dormir mi amor? Seguro andas sobrepensando mucho en algo, o sera que ¿andas ansiosa?, por que no intentas relajarte un rato mi vida, intanta respirar, no pienses en nada ahora, busca en google capybara t-rex y decime que pensas.",
+  },
+  {
+    id: 3,
+    label: "cuando me extrañes mucho",
+    short: "Para cuando te duela no tenerme al lado.",
+    content: "Hola nena, así que me andas extrañando, vamos a hacer una cosa, ¿te acordas de la vez que jugamos minecraft juntos y gritabas mi amor para que fuera a buscarte y ayudarte? fue super divertido, admito que incluso llegue a poner el mundo en peaceful para que no te mataran los mounstritos. Ese es uno de mis recuerdos favoritos, ¿cual es el tuyo?.",
+  },
+  {
+    id: 4,
+    label: "cuando estés ansiosa",
+    short: "Para cuando la ansiedad se dispara.",
+    content: "Amor, respirá conmigo un segundo. No tenés que resolver todo hoy, no tenés que ser perfecta, ni fuerte, ni rápida. Solo quedarte acá un segundo, y eso alcanza. Así como sos, así como estás ahora mismo. Cerrá los ojos un momento y pensá en mi voz diciéndote despacio que ya va a pasar, que tu cabeza solo está corriendo más rápido de lo que vos podés seguir. Quedate conmigo un ratito en este pensamiento: estoy orgulloso de vos, incluso en tus días difíciles. No estás sola, siempre voy a estar ahí para vos.",
+  },
+  {
+    id: 5,
+    label: "cuando estés enojada conmigo",
+    short: "Para cuando quieras putearme pero igual me ames.",
+    content: "Mi amor, ya sé que ahora mismo me querés putear, y probablemente con razón. Pero antes de que me mandes a la mierda, dejame decirte algo: sigo acá, y te sigo queriendo igual. No estoy peleando contra vos, estoy peleando con vos, para que estemos bien. Respirá un segundo, bajemos el modo guerra los dos, y cuando quieras me explicás qué te molesto. Te prometo que te voy a escuchar de verdad. Y cuando se te pase un poquito, vení que te abrazo, porque sí… aunque estés enojada, igual te amo como un bobo, mi niña preciosa.",
+  },
+  {
+    id: 6,
+    label: "cuando sientas que nada sale bien",
+    short: "Para esos días donde todo parece salir mal.",
+    content: "Mi amor, vení, respirá un segundo conmigo. Sé que hoy todo te está saliendo mal y tu cabeza seguro está diciendo cosas horribles que no son verdad. Pero escuchame: vos no sos tus días malos, ni tus frustraciones, ni lo que no salió. Sos muchísimo más que eso. Yo creo en vos incluso cuando vos no podés hacerlo. Y si hoy el mundo está en tu contra, bueno… yo no. Yo estoy acá, listo para mandar a matar a quien quieras, o para ayudarte a resolver todo.",
+  },
+  {
+    id: 7,
+    label: "cuando te sientas sola",
+    short: "Para que sepas que nunca estas sola.",
+    content: "Mi amor, sé que a veces te pesa el silencio, que sentís que nadie te ve o que estás peleando todo sola. Pero estoy acá, aunque sea a la distancia, como un idiota que piensa en vos a cada rato. No necesitás aguantar todo sola, ni tragarte lo que te duele. Cuando te sientas así, acordate de mí, de que soy tu lugar seguro. Yo te acompaño incluso cuando ni vos sabés qué necesitás.",
+  },
+  {
+    id: 8,
+    label: "cuando tengas miedo",
+    short: "Para cuando las cosas den vertigo.",
+    content: "Mi amor, vení conmigo un momento. Sé que hay cosas que te asustan más de lo que decís, y está bien tener miedo. No sos débil por sentirlo. Acá tenés mi mano, aunque sea en palabras. Quédate conmigo un ratito, dejá que te calme, que te hable bajito hasta que tu cabeza deje de correr. No estás sola, y no tenés que pelear contra tus miedos sin mí.",
+  },
+  {
+    id: 9,
+    label: "cuando estés muy feliz",
+    short: "Para disfrutar de un momento lindo de alegria.",
+    content: "Mi amor, quiero que este momentito de alegría lo compartamos. Me encanta imaginarte sonriendo por cualquier boludez linda, o porque algo te salió bien. Me hace feliz que estés feliz, así de simple. Guardá este instante, disfrutalo, y dejame estar ahí con vos, aunque sea en tu cabeza, celebrando como dos nenes.",
+  },
+  {
+    id: 10,
+    label: "cuando necesites un abrazo",
+    short: "Para cuando lo unico que quieras sea un abrazo.",
+    content: "Mi amor, cerrá los ojos un segundo. Imaginate que te abrazo fuerte, de esos que te acomodan el alma, que te hacen sentir en casa. Yo sé que ningún texto reemplaza mis brazos, pero por ahora dejame sostenerte así, con palabras. Vos apoyate acá, tranquila. Estoy con vos..",
+  },
+  {
+    id: 11,
+    label: "cuando dudes de vos",
+    short: "Para esas ocasiones en las que olvides la maravillosa mujer que sos.",
+    content: "Mi amor, tu cabeza a veces te hace creer que sos menos de lo que sos, y ahí es cuando me dan ganas de agarrarte la carita y decirte: ¿vos te escuchás? Sos increíble, posta. Tenés una fuerza y una luz que vos misma no ves. Cuando dudes, agarrá esta carta y dejame recordártelo hasta que te vuelva el aire.",
+  },
+  {
+    id: 12,
+    label: "cuando te sientas fea",
+    short: "Para cuando el autoestima ande de sabatico.",
+    content: "Ay, mi amor… si supieras cómo te veo yo. Cuando tu cabeza te miente y te tira esa mierda de “no estás linda”, abrí esto. Porque si me vieras la cara cuando te miro… no tendrías ninguna duda. Para mí sos hermosa incluso en tus días más caídos, incluso cuando vos no te soportás. Y no es chamuyo: lo siento de verdad.",
+  },
+  {
+    id: 13,
+    label: "cuando te sientas chiquita",
+    short: "Para esos dias que la vida se siente muy grande.",
+    content: "Mi amor, vení acá, que te abrazo con cuidado. Sé que hay días donde te sentís diminuta, frágil, como si todo te quedara grande. Pero acá conmigo no tenés que hacerte la fuerte. Podés ser chiquita si querés, yo te guardo, te cuido, te doy espacio para respirar. Conmigo estás a salvo.",
+  },
+  {
+    id: 14,
+    label: "cuando quieras rendirte",
+    short: "Para cuando te falten fuerzas.",
+    content: "Mi amor, sé que estás agotada. Lo sé. Y sé que a veces querés mandar todo a la mierda. Pero mirame un segundo, aunque sea en tu imaginación: no estás sola peleando esto. Sos fuerte, incluso cuando te sentís rota. Y si el mundo te pesa demasiado hoy, dejame llevar un poquito por vos. No aflojes. Yo creo en vos incluso cuando vos te quebrás.",
+  },
+  {
+    id: 15,
+    label: "cuando extrañes mi voz",
+    short: "Para cuando quieras sentirme cerquita.",
+    content: "Mi amor, cerrá los ojos y escuchame como si te hablara al oído. Vos sabés cómo sueno cuando te hablo bajito, cuando te digo una boludez tierna para que te rías. Pensá en eso. Estoy cerca, más de lo que parece. Y si hoy me extrañás, bueno… yo también te extraño, más de lo que admito.",
+  },
+  {
+    id: 16,
+    label: "cuando tengas un logro",
+    short: "Para celebrar tus victorias.",
+    content: "Mi amor… mirá lo que hiciste. Estoy orgulloso de vos, de verdad. Sé cuánto te cuesta cada paso, cada avance, cada mini victoria. Y vos igual lo hacés. Me encanta verte crecer, verte ganar, verte feliz por algo que es tuyo. Te aplaudo desde acá, como un boludo enamorado.",
+  },
+  {
+    id: 17,
+    label: "cuando estés enferma",
+    short: "Para cuando andes enfermita.",
+    content: "Mi amor, ojalá pudiera estar ahí cuidándote, haciéndote un té, tapándote, molestándote para que tomes agua. Pero si no puedo, al menos dejame escribirte esto: descansá, no te exijas, no te hables feo. Tu cuerpito necesita cariño hoy. Si pudiera, te tendría en brazos y te haría mimos hasta que te duermas.",
+  },
+  {
+    id: 18,
+    label: "cuando sientas que nadie te entiende",
+    short: "Para cuando el mundo parezca hablar otro idioma.",
+    content: "Mi amor, sé lo feo que es sentir que hablás y nadie te escucha de verdad. Pero yo sí te entiendo, incluso cuando te cuesta explicarte. Te leo entre líneas, te reconozco hasta en tus silencios. Vos no estás sola en tu idioma: yo lo hablo.",
+  },
+  {
+    id: 19,
+    label: "cuando quieras algo lindo",
+    short: "Para cuando tengas ganas de una dosis de ternura.",
+    content: "Mi amor, acá tenés tu cucharadita de ternura. Vení, acercate. Quiero que sepas que sos una de las cosas más lindas que me pasaron, incluso en los días donde todo me sale mal. Te quiero, Te amo, así, simple y suave.",
+  },
+  {
+    id: 20,
+    label: "cuando no sepas cuál abrir",
+    short: "Para cualquier momento, sin motivo.",
+    content: "Mi amor, si llegaste a esta es porque necesitabas un abrazo en forma de palabras. Así que acá estoy. No importa qué te pase ni por qué. Solo quiero que te quedes conmigo un minuto y respires. Estoy con vos en todo.",
+  },
+];

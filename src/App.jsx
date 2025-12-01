@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { gifts } from "./data/gifts";
 import { DayCard } from "./components/DayCard";
+import { LettersWall } from "./components/LettersWall";
 
 const STORAGE_KEY = "vale_advent_opened";
 
@@ -42,6 +43,7 @@ const layoutPositions = [
   // 12 – fila 4, columna 3
   "row-start-4 col-start-3 row-span-2",
 
+  // 13 – fila 5, columnas 1 y 2
   "row-start-5 col-start-1 col-span-2",
 ];
 
@@ -81,6 +83,7 @@ function saveOpened(list) {
 function App() {
   const [selectedGift, setSelectedGift] = useState(null);
   const [openedDays, setOpenedDays] = useState([]);
+  const [view, setView] = useState("calendar"); // "calendar" | "letters"
 
   useEffect(() => {
     setOpenedDays(loadOpened());
@@ -88,7 +91,7 @@ function App() {
 
   function handleDayClick(gift) {
     if (!isDayUnlocked(gift.day)) {
-      alert("No seas ansiosa, que todavia no podes abrir ese.");
+      alert("No seas ansiosa, que todavía no podés abrir ese. 😠✨");
       return;
     }
 
@@ -107,54 +110,78 @@ function App() {
 
   function openGiftLink() {
     if (!selectedGift?.url) return;
+
+    // regalo especial que abre la vista de cartitas internas
+    if (selectedGift.url === "internal:letters") {
+      setSelectedGift(null);
+      setView("letters");
+      return;
+    }
+
+    // resto de regalos: links normales
     window.open(selectedGift.url, "_blank");
   }
 
   return (
-    <div className="min-h-screen relative  text-sky-100 flex flex-col items-center px-4 py-6">
-      {/* Header */}
-      <header className="w-full max-w-md text-center mb-6 relative z-10">
-        <h1 className="text-3xl font-bold mb-1 text-white [text-shadow:2px_2px_0px_#8EC9FF]">
-          Cinnamondario de Adviento
-        </h1>
-        <p className="text-sm text-white drop-shadow-[0_0_8px_rgba(0,0,0,0.25)]">
-          Es nuestra primera navidad juntos, así que hagamosla memorable.
-        </p>
-      </header>
+    <div className="min-h-screen relative text-sky-100 flex flex-col items-center px-4 py-6">
+      {/* capa de nieve al fondo */}
+      <div className="snow" />
 
-      <main className="w-full max-w-5xl relative z-10 grow">
-        <div
-          className="
-      grid grid-cols-4
-      auto-rows-[90px] md:auto-rows-[110px]
-      gap-1.5 md:gap-2.5
-      mt-6 md:mt-8
-    "
-        >
-          {gifts.map((gift, index) => {
-            const positionClass = layoutPositions[index];
-            return (
-              <DayCard
-                key={gift.day}
-                day={gift.day}
-                unlocked={isDayUnlocked(gift.day)}
-                opened={openedDays.includes(gift.day)}
-                onClick={() => handleDayClick(gift)}
-                imageUrl={gift.image}
-                className={positionClass}
-              />
-            );
-          })}
-        </div>
-      </main>
-      {/* Footer chiquito */}
+      {view === "calendar" && (
+        <>
+          {/* Header calendario */}
+          <header className="w-full max-w-md text-center mb-6 relative z-10">
+            <h1 className="text-3xl font-bold mb-1 text-white [text-shadow:2px_2px_0px_#8EC9FF]">
+              Cinnamondario de Adviento
+            </h1>
+            <p className="text-sm text-white drop-shadow-[0_0_8px_rgba(0,0,0,0.25)]">
+              Es nuestra primera navidad juntos, así que hagámosla memorable.
+            </p>
+          </header>
+
+          {/* Grilla del calendario */}
+          <main className="w-full max-w-5xl relative z-10 grow">
+            <div
+              className="
+                grid grid-cols-4
+                auto-rows-[90px] md:auto-rows-[110px]
+                gap-1.5 md:gap-2.5
+                mt-6 md:mt-8
+              "
+            >
+              {gifts.map((gift, index) => {
+                const positionClass = layoutPositions[index];
+                return (
+                  <DayCard
+                    key={gift.day}
+                    day={gift.day}
+                    unlocked={isDayUnlocked(gift.day)}
+                    opened={openedDays.includes(gift.day)}
+                    onClick={() => handleDayClick(gift)}
+                    imageUrl={gift.image}
+                    className={positionClass}
+                  />
+                );
+              })}
+            </div>
+          </main>
+        </>
+      )}
+
+      {view === "letters" && (
+        <main className="w-full max-w-5xl relative z-10 grow">
+          <LettersWall onBack={() => setView("calendar")} />
+        </main>
+      )}
+
+      {/* Footer chiquito (para ambas vistas) */}
       <footer className="mt-6 text-xs text-sky-700/90 drop-shadow-[0_0_8px_rgba(0,0,0,0.3)] relative z-10">
         © {new Date().getFullYear()} Facundo White — All rights reserved.
       </footer>
 
-      {/* Modal del regalo */}
+      {/* Modal del regalo (solo en vista calendario) */}
       <AnimatePresence>
-        {selectedGift && (
+        {view === "calendar" && selectedGift && (
           <motion.div
             className="fixed inset-0 z-40 flex items-center justify-center bg-sky-900/20 backdrop-blur-[1px]"
             initial={{ opacity: 0 }}
@@ -163,16 +190,16 @@ function App() {
           >
             <motion.div
               className="
-          relative mx-6 w-full max-w-sm
-          rounded-3xl border border-[#bcd9f5]
-          bg-[#f8fbff]
-          shadow-[0_0_0_3px_#e5f1ff_inset]
-          px-6 py-5
-        "
+                relative mx-6 w-full max-w-sm
+                rounded-3xl border border-[#bcd9f5]
+                bg-[#f8fbff]
+                shadow-[0_0_0_3px_#e5f1ff_inset]
+                px-6 py-5
+              "
               initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97, y: 12 }}
-              transition={{ type: "spring", stiffness: 240, damping: 20 }}
+              transition={{ type: 'spring', stiffness: 240, damping: 20 }}
             >
               {/* Botón cerrar simple */}
               <button
@@ -194,9 +221,9 @@ function App() {
               {/* Título estilo poster */}
               <h2
                 className="
-            text-center text-sky-700 text-2xl font-semibold mb-1
-            [text-shadow:1px_1px_0px_#ffffff,2px_2px_0px_#d7eaff]
-          "
+                  text-center text-sky-700 text-2xl font-semibold mb-1
+                  [text-shadow:1px_1px_0px_#ffffff,2px_2px_0px_#d7eaff]
+                "
               >
                 Día #{selectedGift.day}
               </h2>
@@ -211,14 +238,14 @@ function App() {
                 <button
                   onClick={openGiftLink}
                   className="
-              w-full rounded-xl
-              bg-[#dbefff]
-              border border-[#b2d5f0]
-              text-sky-700 font-medium
-              py-2.5
-              shadow-[0_2px_0_#b2d5f0]
-              active:translate-y-1px active:shadow-none
-            "
+                    w-full rounded-xl
+                    bg-[#dbefff]
+                    border border-[#b2d5f0]
+                    text-sky-700 font-medium
+                    py-2.5
+                    shadow-[0_2px_0_#b2d5f0]
+                    active:translate-y-1px active:shadow-none
+                  "
                 >
                   Abrir regalo
                 </button>
@@ -226,14 +253,14 @@ function App() {
                 <button
                   onClick={closeModal}
                   className="
-              w-full rounded-xl
-              bg-white
-              border border-[#d9e7f7]
-              text-sky-500 text-sm
-              py-2
-              shadow-[0_2px_0_#d9e7f7]
-              active:translate-y-1px active:shadow-none
-            "
+                    w-full rounded-xl
+                    bg-white
+                    border border-[#d9e7f7]
+                    text-sky-500 text-sm
+                    py-2
+                    shadow-[0_2px_0_#d9e7f7]
+                    active:translate-y-1px active:shadow-none
+                  "
                 >
                   Ver más tarde
                 </button>
@@ -247,8 +274,6 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div className="snow"></div>
     </div>
   );
 }
