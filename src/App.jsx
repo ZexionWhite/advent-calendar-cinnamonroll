@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { gifts } from "./data/gifts";
 import { DayCard } from "./components/DayCard";
 import { LettersWall } from "./components/LettersWall";
+import { DrawingGift } from "./components/DrawingGift";
 
 const STORAGE_KEY = "vale_advent_opened";
 
@@ -83,7 +84,7 @@ function saveOpened(list) {
 function App() {
   const [selectedGift, setSelectedGift] = useState(null);
   const [openedDays, setOpenedDays] = useState([]);
-  const [view, setView] = useState("calendar"); // "calendar" | "letters"
+  const [view, setView] = useState("calendar"); // "calendar" | "letters" | "drawing"
 
   useEffect(() => {
     setOpenedDays(loadOpened());
@@ -118,6 +119,13 @@ function App() {
       return;
     }
 
+    // regalo especial que abre el dibujito con interrogatorio
+    if (selectedGift.url === "internal:drawing") {
+      setSelectedGift(null);
+      setView("drawing");
+      return;
+    }
+
     // resto de regalos: links normales
     window.open(selectedGift.url, "_blank");
   }
@@ -127,6 +135,7 @@ function App() {
       {/* capa de nieve al fondo */}
       <div className="snow" />
 
+      {/* VISTA: CALENDARIO */}
       {view === "calendar" && (
         <>
           {/* Header calendario */}
@@ -168,13 +177,24 @@ function App() {
         </>
       )}
 
+      {/* VISTA: CARTITAS */}
       {view === "letters" && (
         <main className="w-full max-w-5xl relative z-10 grow">
           <LettersWall onBack={() => setView("calendar")} />
         </main>
       )}
 
-      {/* Footer chiquito (para ambas vistas) */}
+      {/* VISTA: DIBUJITO CON PREGUNTAS */}
+      {view === "drawing" && (
+        <main className="w-full max-w-5xl relative z-10 grow flex justify-center items-start mt-4">
+          <DrawingGift
+            onBack={() => setView("calendar")}
+            imageUrl="/cinna/dibujo-3.png" // cambia esto si tu imagen tiene otro nombre
+          />
+        </main>
+      )}
+
+      {/* Footer chiquito (para todas las vistas) */}
       <footer className="mt-6 text-xs text-sky-700/90 drop-shadow-[0_0_8px_rgba(0,0,0,0.3)] relative z-10">
         © {new Date().getFullYear()} Facundo White — All rights reserved.
       </footer>
@@ -199,7 +219,7 @@ function App() {
               initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97, y: 12 }}
-              transition={{ type: 'spring', stiffness: 240, damping: 20 }}
+              transition={{ type: "spring", stiffness: 240, damping: 20 }}
             >
               {/* Botón cerrar simple */}
               <button

@@ -10,7 +10,7 @@ export const gifts = [
     day: 3,
     title: "día 3",
     message: "Hoy toca algo mas tierno y personal.",
-    url: "https://tu-link-del-regalo-3.com",
+    url: "internal:drawing",
     image: "/cinna/cinna-3.png",
   },
   {
