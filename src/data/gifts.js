@@ -17,7 +17,7 @@ export const gifts = [
     day: 5,
     title: "día 5",
     message: "Creo que hoy es un dia perfecto para escribirle a mi musa.",
-    url: "https://tu-link-del-regalo-5.com",
+    url: "internal:poem",
     image: "/cinna/cinna-5.png",
   },
   {
