@@ -23,8 +23,8 @@ export const gifts = [
   {
     day: 7,
     title: "día 7",
-    message: "Pero ¿Que seria una Navidad sin musica?.",
-    url: "https://tu-link-del-regalo-7.com",
+    message: "Esta vez el regalo no viene de mi.",
+    url: "internal:audio",
     image: "/cinna/cinna-7.png",
   },
   {

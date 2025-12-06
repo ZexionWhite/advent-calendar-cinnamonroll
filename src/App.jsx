@@ -4,7 +4,8 @@ import { gifts } from "./data/gifts";
 import { DayCard } from "./components/DayCard";
 import { LettersWall } from "./components/LettersWall";
 import { DrawingGift } from "./components/DrawingGift";
-import { TimePoemGift } from "./components/TimePoemGift"; // 👈 agregado
+import { TimePoemGift } from "./components/TimePoemGift";
+import { AudioGift } from "./components/AudioGift"; // 👈 NUEVO
 
 const STORAGE_KEY = "vale_advent_opened";
 
@@ -52,8 +53,8 @@ function saveOpened(list) {
 function App() {
   const [selectedGift, setSelectedGift] = useState(null);
   const [openedDays, setOpenedDays] = useState([]);
-  const [view, setView] = useState("calendar"); 
-  // opciones: "calendar" | "letters" | "drawing" | "poem"
+  const [view, setView] = useState("calendar");
+  // opciones: "calendar" | "letters" | "drawing" | "poem" | "audio" 👈 NUEVA
 
   useEffect(() => {
     setOpenedDays(loadOpened());
@@ -97,6 +98,12 @@ function App() {
       return;
     }
 
+    if (selectedGift.url === "internal:audio") {
+      setSelectedGift(null);
+      setView("audio");
+      return;
+    }
+
     window.open(selectedGift.url, "_blank");
   }
 
@@ -104,6 +111,7 @@ function App() {
     <div className="min-h-screen relative text-sky-100 flex flex-col items-center px-4 py-6">
       <div className="snow" />
 
+      {/* CALENDARIO */}
       {view === "calendar" && (
         <>
           <header className="w-full max-w-md text-center mb-6 relative z-10">
@@ -133,28 +141,37 @@ function App() {
         </>
       )}
 
+      {/* VISTAS INTERNAS */}
       {view === "letters" && (
-        <main className="w-full max-w-5xl relative z-10 grow">
+        <main className="w-full max-w-5xl grow relative z-10">
           <LettersWall onBack={() => setView("calendar")} />
         </main>
       )}
 
       {view === "drawing" && (
-        <main className="w-full max-w-5xl relative z-10 grow flex justify-center items-start mt-4">
+        <main className="w-full max-w-5xl grow relative z-10 flex justify-center mt-4">
           <DrawingGift onBack={() => setView("calendar")} />
         </main>
       )}
 
       {view === "poem" && (
-        <main className="w-full max-w-5xl relative z-10 grow flex justify-center items-start mt-4">
+        <main className="w-full max-w-5xl grow relative z-10 flex justify-center mt-4">
           <TimePoemGift onBack={() => setView("calendar")} />
         </main>
       )}
 
+      {view === "audio" && (
+        <main className="w-full max-w-5xl grow relative z-10 flex justify-center mt-4">
+          <AudioGift onBack={() => setView("calendar")} />
+        </main>
+      )}
+
+      {/* FOOTER */}
       <footer className="mt-6 text-xs text-sky-700/90 drop-shadow-[0_0_8px_rgba(0,0,0,0.3)] relative z-10">
         © {new Date().getFullYear()} Facundo White — All rights reserved.
       </footer>
 
+      {/* MODAL */}
       <AnimatePresence>
         {view === "calendar" && selectedGift && (
           <motion.div
@@ -168,19 +185,20 @@ function App() {
               initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97, y: 12 }}
-              transition={{ type: "spring", stiffness: 240, damping: 20 }}
+              transition={{ type: 'spring', stiffness: 240, damping: 20 }}
             >
-              <button onClick={closeModal} className="absolute top-3 right-3 text-sky-400 hover:text-sky-600">
+              <button className="absolute top-3 right-3 text-sky-400 hover:text-sky-600" onClick={closeModal}>
                 ✕
               </button>
 
               <div className="w-full flex justify-center mb-3">
-                <img src="/cinna/deco-bows.png" className="h-6 opacity-90" alt="" />
+
               </div>
 
               <h2 className="text-center text-sky-700 text-2xl font-semibold mb-1 [text-shadow:1px_1px_0px_#ffffff,2px_2px_0px_#d7eaff]">
                 Día #{selectedGift.day}
               </h2>
+
               <p className="text-center text-slate-700 text-[15px] leading-snug px-2">
                 {selectedGift.message}
               </p>
@@ -188,20 +206,21 @@ function App() {
               <div className="mt-5 flex flex-col gap-2">
                 <button
                   onClick={openGiftLink}
-                  className="w-full rounded-xl bg-[#dbefff] border border-[#b2d5f0] text-sky-700 font-medium py-2.5 shadow-[0_2px_0_#b2d5f0] active:translate-y-1px active:shadow-none"
+                  className="w-full rounded-xl bg-[#dbefff] border border-[#b2d5f0] text-sky-700 font-medium py-2.5 shadow-[0_2px_0_#b2d5f0]"
                 >
                   Abrir regalo
                 </button>
+
                 <button
                   onClick={closeModal}
-                  className="w-full rounded-xl bg-white border border-[#d9e7f7] text-sky-500 text-sm py-2 shadow-[0_2px_0_#d9e7f7] active:translate-y-1px active:shadow-none"
+                  className="w-full rounded-xl bg-white border border-[#d9e7f7] text-sky-500 text-sm py-2 shadow-[0_2px_0_#d9e7f7]"
                 >
                   Ver más tarde
                 </button>
               </div>
 
               <div className="w-full flex justify-center mt-4 opacity-90">
-                <img src="/cinna/deco-stars.png" className="h-5" alt="" />
+                
               </div>
             </motion.div>
           </motion.div>
